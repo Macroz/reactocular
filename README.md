@@ -1,7 +1,6 @@
 # reactocular [![Build Status](https://travis-ci.org/Macroz/reactocular.svg?branch=master)](https://travis-ci.org/Macroz/reactocular)
 
-reactocular
-ˈrɪˈaktɒkjʊlə/
+/ˈrɪˈaktɒkjʊlə/<br>
 _noun_
 
 1. of or connected with React and vision.<br>
@@ -11,7 +10,7 @@ _adjective_
 
 1. visual, brutish, reactive<br>
 
-Visual brutish component scan of React projects. reactocular visualizes your React component hierarcy using [Graphviz](http://www.graphviz.org/)
+Visual brutish component scan of React projects. reactocular visualizes your React component hierarcy using [tangle](https://github.com/Macroz/tangle) and [Graphviz](http://www.graphviz.org/)
 
 1 Minute Version
 ----------------
