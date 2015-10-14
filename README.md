@@ -34,6 +34,8 @@ The result is a set of files with various visualiations of your components. You 
 
 Also if you want to use the code from Clojure, add to your project.clj:
 
+[![Clojars Project](http://clojars.org/macroz/reactocular/latest-version.svg)](http://clojars.org/macroz/reactocular)
+
 ## Backlog
 
 - Stylize the graph
