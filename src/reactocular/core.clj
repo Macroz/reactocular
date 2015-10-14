@@ -108,6 +108,6 @@
 (defn -main [& args]
   (if (= (count args) 1)
     (let [components (scan (first args))]
-      (render components "output")
+      (render components "components")
       #_(shutdown-agents))
     (println "Usage: reactocular <root-directory>")))
