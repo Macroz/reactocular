@@ -28,7 +28,7 @@ You can use it like a regular Java app like this:
 java -jar reactocular.jar ../hsl/digitransit-ui/app
 ```
 
-The result is a set of files with various visualiations of your components.
+The result is a set of files with various visualiations of your components. You can see that there is still work to do :)
 
 ![Example component.svg](https://rawgit.com/Macroz/reactocular/master/examples/digitransit.svg) (from [Digitransit](http://digitransit.fi))
 
@@ -40,6 +40,8 @@ Also if you want to use the code from Clojure, add to your project.clj:
 ## Backlog
 
 - Stylize the graph
+- Add overall statistics
+- Add simple list view
 - Check against other projects and improve
 
 =======
