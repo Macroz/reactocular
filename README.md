@@ -15,18 +15,22 @@ Visual brutish component scan of React projects. reactocular visualizes your Rea
 1 Minute Version
 ----------------
 
+You can use reactocular from command-line if you have [Graphviz](http://www.graphviz.org) and [Leiningen](http://leiningen.org) like this:
+
 ```
 lein run ../hsl/digitransit-ui/app
 ```
 
 There is also a convenient [uberjar](uberjar/reactocular.jar?raw=true) available to download.
-You can use it like a regular Java app like this.
+You can use it like a regular Java app like this:
 
 ```
 java -jar reactocular.jar ../hsl/digitransit-ui/app
 ```
 
-![Example](https://rawgit.com/Macroz/reactocular/master/examples/digitransit.svg) (from [Digitransit](http://digitransit.fi))
+The result is a set of files with various visualiations of your components.
+
+![Example component.svg](https://rawgit.com/Macroz/reactocular/master/examples/digitransit.svg) (from [Digitransit](http://digitransit.fi))
 
 Also if you want to use the code from Clojure, add to your project.clj:
 
@@ -35,10 +39,7 @@ Also if you want to use the code from Clojure, add to your project.clj:
 
 ## Backlog
 
-- Running as a tool
-- Finish examples
-- Release & jar
-- Stylize
+- Stylize the graph
 - Check against other projects and improve
 
 =======
