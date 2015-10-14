@@ -3,7 +3,7 @@
 /ˈrɪˈaktɒkjʊlə/<br>
 _noun_
 
-1. of or connected with React and vision.<br>
+1. of or connected to React and vision.<br>
 _"project anxiety caused by reactocular trauma"_<br>
 
 _adjective_
