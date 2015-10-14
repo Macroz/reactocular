@@ -4,11 +4,11 @@
 _noun_
 
 1. of or connected with React and vision.<br>
-_"reactocular trauma"_<br>
+_"project anxiety caused by reactocular trauma"_<br>
 
 _adjective_
 
-1. visual, brutish, reactive<br>
+1. visual, brutish, inelegant<br>
 
 Visual brutish component scan of React projects. reactocular visualizes your React component hierarcy using [tangle](https://github.com/Macroz/tangle) and [Graphviz](http://www.graphviz.org/)
 
