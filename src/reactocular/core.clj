@@ -109,5 +109,5 @@
   (if (= (count args) 1)
     (let [components (scan (first args))]
       (render components "components")
-      #_(shutdown-agents))
+      (shutdown-agents))
     (println "Usage: reactocular <root-directory>")))
