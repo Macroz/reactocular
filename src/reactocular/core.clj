@@ -22,9 +22,10 @@
 
 (defn file-contains-component? [file]
   (let [src (slurp file)
-        regular-component (> (.indexOf src "extends React.Component") -1)
+        extends-component (> (.indexOf src "extends React.Component") -1)
+        create-class-component (> (.indexOf src "React.createClass") -1)
         stateless-function (> (.indexOf src " = (props) ->") -1)
-        result (or regular-component stateless-function)]
+        result (or extends-component create-class-component stateless-function)]
     result))
 
 (defn get-relative-path [root-path file]
