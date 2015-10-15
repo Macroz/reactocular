@@ -18,7 +18,7 @@
 
 (defn capitalize-words [name]
   (str/join (->> (str/split name #"\-")
-                (map str/capitalize))))
+                 (map str/capitalize))))
 
 (defn file-contains-component? [file]
   (let [src (slurp file)
@@ -94,17 +94,17 @@
 (defn render [components filename]
   (let [nodes components
         edges (mapcat (partial component->edges components) components)]
-  (println "Generating graph from" (count nodes) "nodes and" (count edges) "edges")
-  (let [dot (graph->dot nodes edges {:node {:shape :none :margin 0}
-                                     :graph {:label filename :rankdir :LR}
-                                     :directed? true
-                                     :node->id component->id
-                                     :node->descriptor component->descriptor})]
-    (println "Writing DOT" (str filename ".dot"))
-    (spit (str filename ".dot") dot)
-    (println "Writing SVG" (str filename ".svg"))
-    (spit (str filename ".svg") (dot->svg dot))
-    )))
+    (println "Generating graph from" (count nodes) "nodes and" (count edges) "edges")
+    (let [dot (graph->dot nodes edges {:node {:shape :none :margin 0}
+                                       :graph {:label filename :rankdir :LR}
+                                       :directed? true
+                                       :node->id component->id
+                                       :node->descriptor component->descriptor})]
+      (println "Writing DOT" (str filename ".dot"))
+      (spit (str filename ".dot") dot)
+      (println "Writing SVG" (str filename ".svg"))
+      (spit (str filename ".svg") (dot->svg dot))
+      )))
 
 (defn -main [& args]
   (if (= (count args) 1)
