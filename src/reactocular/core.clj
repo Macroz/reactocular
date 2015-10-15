@@ -85,7 +85,7 @@
         stereotype (if page "&laquo;page&raquo;" "")]
     (if (:label component)
       component
-      {:label [:TABLE
+      {:label [:TABLE {:CELLSPACING 0}
                [:TR [:TD {:BGCOLOR (if page "lightgray" "white")} [:B (:name component)] [:BR] stereotype]]
                [:TR [:TD (str "/" (str/join "/" (:module component)))]]]
        :tooltip (:path component)})))
