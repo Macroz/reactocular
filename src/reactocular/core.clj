@@ -28,6 +28,9 @@
         result (or extends-component create-class-component stateless-function)]
     result))
 
+(defn file-contains-stateless-functional-component? [file name]
+  (> (.indexOf (slurp file) (str name " = (props) ->")) -1))
+
 (defn get-relative-path [root-path file]
   (str/replace (.getAbsolutePath file) (.getAbsolutePath root-path) ""))
 
@@ -56,7 +59,8 @@
      :path (get-relative-path root file)
      :name name
      :full-name full-name
-     :file file}))
+     :file file
+     :stateless (file-contains-stateless-functional-component? file name)}))
 
 (defn find-all [components src]
   (doall (filter (fn [component]
@@ -76,24 +80,45 @@
         files (->> (file-seq root)
                    (filter interesting-file?)
                    (filter file-contains-component?)
-                   (sort-by #(.getName %)))]
-    (map (partial file->component root) files)))
+                   (sort-by #(.getName %)))
+        components (map (partial file->component root) files)
+        components (map (fn [component]
+                          (let [edges (component->edges components component)]
+                            (assoc component
+                                   :edges edges
+                                   :elementary (= (count edges) 0))))
+                        components)]
+    components))
 
 (def component->id :full-name)
 
+(defn set-flags [& flags]
+  (into [] (remove nil? (for [[t fk] (partition 2 flags)] (when t fk)))))
+
 (defn component->descriptor [component]
   (let [page (some #{"page"} (:module component))
-        stereotype (if page "&laquo;page&raquo;" "")]
+        stereotypes (set-flags page :page
+                               (:stateless component) :stateless
+                               (:elementary component) :elementary)
+        stereotypes (apply concat (for [stereotype stereotypes]
+                                    [[:BR] (str "&laquo;" (name stereotype) "&raquo;")]))]
     (if (:label component)
       component
       {:label [:TABLE {:CELLSPACING 0}
-               [:TR [:TD {:BGCOLOR (if page "lightgray" "white")} [:B (:name component)] [:BR] stereotype]]
+               [:TR (into [:TD {:BGCOLOR (cond page "gray"
+                                               (:elementary component) "lightgray"
+                                               (:stateless component) "lightgray"
+                                               :else "white")}
+                     [:FONT {:COLOR (cond page "black"
+                                          :else "black")}
+                      [:B (:name component)]]]
+                          stereotypes)]
                [:TR [:TD (str "/" (str/join "/" (:module component)))]]]
        :tooltip (:path component)})))
 
 (defn render [components filename]
   (let [nodes components
-        edges (mapcat (partial component->edges components) components)]
+        edges (mapcat :edges components)]
     (println "Generating graph from" (count nodes) "nodes and" (count edges) "edges")
     (let [dot (graph->dot nodes edges {:node {:shape :none :margin 0}
                                        :graph {:label filename :rankdir :LR}
