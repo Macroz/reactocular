@@ -106,8 +106,8 @@
       component
       {:label [:TABLE {:CELLSPACING 0}
                [:TR (into [:TD {:BGCOLOR (cond page "gray"
-                                               (:elementary component) "lightgray"
                                                (:stateless component) "lightgray"
+                                               (:elementary component) "lightgreen"
                                                :else "white")}
                      [:FONT {:COLOR (cond page "black"
                                           :else "black")}
