@@ -87,7 +87,6 @@
         name (or (last module) "root")
         full-name (module->full-name module)
         parent (when (> (count module) 1) (first (take-last 2 module)))]
-    (println name full-name)
     {:module module
      :name name
      :full-name full-name
@@ -144,7 +143,6 @@
        :tooltip (:path component)})))
 
 (defn module->descriptor [module]
-  (println module)
   {:label (:name module)})
 
 (defn render [nodes edges options filename]
