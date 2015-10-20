@@ -79,16 +79,20 @@
   (for [referred-component (:references component)]
     [(:full-name component) (:full-name referred-component)]))
 
+(defn module->full-name [module]
+  (str/join "/" module))
+
 (defn component->module [component]
   (let [module (:module component)
         name (or (last module) "root")
-        full-name (str/join "/" (:module component))]
+        full-name (module->full-name module)
+        parent (when (> (count module) 1) (first (take-last 2 module)))]
     (println name full-name)
     {:module module
      :name name
      :full-name full-name
      :edges (map (fn [t] [t full-name])
-                 (remove nil? [(first (take-last 2 module))]))}))
+                 (remove nil? [parent]))}))
 
 (defn gather-modules [components]
   (distinct-by :full-name (map component->module components)))
@@ -166,7 +170,7 @@
   (let [nodes modules
         edges (mapcat :edges modules)
         options {:node {:shape :none :margin 0}
-                 :graph {:label filename :rankdir :LR}
+                 :graph {:label filename :rankdir :TD}
                  :directed? true
                  :node->id module->id
                  :node->descriptor module->descriptor}]
