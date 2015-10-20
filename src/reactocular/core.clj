@@ -2,6 +2,7 @@
   (:require [tangle.core :refer :all]
             [clojure.java.io :as io]
             [clojure.string :as str])
+  (:use [medley.core])
   (:gen-class))
 
 (defn interesting-file? [file]
@@ -70,10 +71,27 @@
                          (> (.indexOf src (str "{" (:name component) "}")) -1))))
                  components)))
 
-(defn component->edges [components component]
+(defn component->references [components component]
   (let [src (slurp (:file component))]
-    (for [referred-component (find-all components src)]
-      [(:full-name component) (:full-name referred-component)])))
+    (find-all components src)))
+
+(defn component->edges [component]
+  (for [referred-component (:references component)]
+    [(:full-name component) (:full-name referred-component)]))
+
+(defn component->module [component]
+  (let [module (:module component)
+        name (or (last module) "root")
+        full-name (str/join "/" (:module component))]
+    (println name full-name)
+    {:module module
+     :name name
+     :full-name full-name
+     :edges (map (fn [t] [t full-name])
+                 (remove nil? [(first (take-last 2 module))]))}))
+
+(defn gather-modules [components]
+  (distinct-by :full-name (map component->module components)))
 
 (defn scan [path]
   (let [root (io/file path)
@@ -81,16 +99,21 @@
                    (filter interesting-file?)
                    (filter file-contains-component?)
                    (sort-by #(.getName %)))
-        components (map (partial file->component root) files)
-        components (map (fn [component]
-                          (let [edges (component->edges components component)]
-                            (assoc component
-                                   :edges edges
-                                   :elementary (= (count edges) 0))))
-                        components)]
+        components (doall (map (partial file->component root) files))
+        components (doall (map (fn [component]
+                                 (let [references (component->references components component)]
+                                   (assoc component :references references)))
+                               components))
+        components (doall (map (fn [component]
+                                 (let [edges (component->edges component)]
+                                   (assoc component
+                                          :edges edges
+                                          :elementary (= (count edges) 0))))
+                               components))]
     components))
 
 (def component->id :full-name)
+(def module->id :full-name)
 
 (defn set-flags [& flags]
   (into [] (remove nil? (for [[t fk] (partition 2 flags)] (when t fk)))))
@@ -116,24 +139,44 @@
                [:TR [:TD (str "/" (str/join "/" (:module component)))]]]
        :tooltip (:path component)})))
 
-(defn render [components filename]
+(defn module->descriptor [module]
+  (println module)
+  {:label (:name module)})
+
+(defn render [nodes edges options filename]
+  (println "Generating graph from" (count nodes) "nodes and" (count edges) "edges")
+  (let [dot (graph->dot nodes edges options)]
+    (println "Writing DOT" (str filename ".dot"))
+    (spit (str filename ".dot") dot)
+    (println "Writing SVG" (str filename ".svg"))
+    (spit (str filename ".svg") (dot->svg dot))
+    ))
+
+(defn render-components [components filename]
   (let [nodes components
-        edges (mapcat :edges components)]
-    (println "Generating graph from" (count nodes) "nodes and" (count edges) "edges")
-    (let [dot (graph->dot nodes edges {:node {:shape :none :margin 0}
-                                       :graph {:label filename :rankdir :LR}
-                                       :directed? true
-                                       :node->id component->id
-                                       :node->descriptor component->descriptor})]
-      (println "Writing DOT" (str filename ".dot"))
-      (spit (str filename ".dot") dot)
-      (println "Writing SVG" (str filename ".svg"))
-      (spit (str filename ".svg") (dot->svg dot))
-      )))
+        edges (mapcat :edges components)
+        options {:node {:shape :none :margin 0}
+                 :graph {:label filename :rankdir :LR}
+                 :directed? true
+                 :node->id component->id
+                 :node->descriptor component->descriptor}]
+    (render nodes edges options filename)))
+
+(defn render-modules [modules filename]
+  (let [nodes modules
+        edges (mapcat :edges modules)
+        options {:node {:shape :none :margin 0}
+                 :graph {:label filename :rankdir :LR}
+                 :directed? true
+                 :node->id module->id
+                 :node->descriptor module->descriptor}]
+    (render nodes edges options filename)))
 
 (defn -main [& args]
   (if (= (count args) 1)
-    (let [components (scan (first args))]
-      (render components "components")
-      (shutdown-agents))
+    (let [components (scan (first args))
+          modules (gather-modules components)]
+      (render-components components "components")
+      (render-modules modules "modules")
+      #_(shutdown-agents))
     (println "Usage: reactocular <root-directory>")))
