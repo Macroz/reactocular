@@ -56,7 +56,7 @@
   (let [name (file->component-name file)
         module (file->module-name root file)
         full-name (str/join "/" (conj module name))]
-    {:module module
+    {:module-id module
      :path (get-relative-path root file)
      :name name
      :full-name full-name
@@ -79,22 +79,75 @@
   (for [referred-component (:references component)]
     [(:full-name component) (:full-name referred-component)]))
 
-(defn module->full-name [module]
+(defn module-id->full-name [module]
   (str/join "/" module))
 
+(def component->id :full-name)
+(def module->id :full-name)
+
 (defn component->module [component]
-  (let [module (:module component)
-        name (or (last module) "root")
-        full-name (module->full-name module)
-        parent (when (> (count module) 1) (first (take-last 2 module)))]
-    {:module module
+  (let [id (or (:module-id component) ["root"])
+        name (last id)
+        full-name (module-id->full-name id)]
+    {:module-id id
      :name name
-     :full-name full-name
-     :edges (map (fn [t] [t full-name])
-                 (remove nil? [parent]))}))
+     :full-name full-name}))
+
+(defn index-by [key-fn coll]
+  (into {} (map (juxt key-fn identity) coll)))
+
+(defn add-parent-ids [modules]
+  (map (fn [module]
+         (let [id (:module-id module)
+               parent-id (when (> (count id) 1) (vec (drop-last 1 id)))]
+           (assoc module :parent-id parent-id)))
+       modules))
+
+(defn module-references [components module]
+  (->> components
+       (mapcat (fn [c] (for [r (:references c)] [(:module-id c) (:module-id r)])))
+       (filter (fn [[from to]] (= (:module-id module) from)))
+       (distinct)))
+
+(defn expand-module-path [module-id]
+  (if (empty? module-id) []
+      (conj (expand-module-path (vec (drop-last module-id)))
+            module-id)))
+
+(defn create-module-from-module-id [module-id]
+  {:module-id module-id
+   :full-name (module-id->full-name module-id)
+   :name (last module-id)
+   :parent-id (drop-last module-id)})
+
+(defn full-parent-tree [modules]
+  (let [all-module-ids (distinct (sort (mapcat expand-module-path (map :module-id modules))))
+        by-id (index-by :module-id modules)]
+    (for [module-id all-module-ids]
+      (if-let [m (by-id module-id)]
+        m
+        (create-module-from-module-id module-id)
+        ))))
+
+(defn add-module-references [components modules]
+  (map (fn [m] (assoc m :references (module-references components m)))  modules))
+
+(defn add-edges [modules]
+  (let [by-id (index-by :module-id modules)]
+    (map (fn [m]
+           (let [parent (by-id (:parent-id m))]
+             (assoc m :edges (concat (when parent
+                                       [[(module->id parent) (module->id m) {:penwidth 3 :weight 1}]])
+                                     (map (fn [[from to]] [(module-id->full-name from) (module-id->full-name to) {:label (count (:references m)) :style :dashed :weight 0}]) (:references m))))))
+         modules)))
 
 (defn gather-modules [components]
-  (distinct-by :full-name (map component->module components)))
+  (let [modules (distinct-by :full-name (map component->module components))
+        modules (add-parent-ids modules)
+        modules (full-parent-tree modules)
+        modules (add-module-references components modules)
+        modules (add-edges modules)]
+    modules))
 
 (defn scan [path]
   (let [root (io/file path)
@@ -115,14 +168,11 @@
                                components))]
     components))
 
-(def component->id :full-name)
-(def module->id :full-name)
-
 (defn set-flags [& flags]
   (into [] (remove nil? (for [[t fk] (partition 2 flags)] (when t fk)))))
 
 (defn component->descriptor [component]
-  (let [page (some #{"page"} (:module component))
+  (let [page (some #{"page"} (:module-id component))
         stereotypes (set-flags page :page
                                (:stateless component) :stateless
                                (:elementary component) :elementary)
@@ -139,11 +189,11 @@
                                           :else "black")}
                       [:B (:name component)]]]
                           stereotypes)]
-               [:TR [:TD (str "/" (str/join "/" (:module component)))]]]
+               [:TR [:TD (str "/" (str/join "/" (:module-id component)))]]]
        :tooltip (:path component)})))
 
 (defn module->descriptor [module]
-  {:label (:name module)})
+  {:label [:TABLE {:CELLSPACING 0} [:TR [:TD (:name module)]]]})
 
 (defn render [nodes edges options filename]
   (println "Generating graph from" (count nodes) "nodes and" (count edges) "edges")
@@ -168,7 +218,7 @@
   (let [nodes modules
         edges (mapcat :edges modules)
         options {:node {:shape :none :margin 0}
-                 :graph {:label filename :rankdir :TD}
+                 :graph {:label filename :rankdir :LR :layout :circo}
                  :directed? true
                  :node->id module->id
                  :node->descriptor module->descriptor}]
