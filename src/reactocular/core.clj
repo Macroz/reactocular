@@ -5,6 +5,8 @@
   (:use [medley.core])
   (:gen-class))
 
+(def react-color "#00d8ff")
+
 (defn interesting-file? [file]
   (let [name (.getName file)]
     (or (.endsWith name ".cjsx")
@@ -156,7 +158,7 @@
                  rc (count (:references m))]
              (assoc m :edges (remove self-reference? (concat (when parent
                                                                [[(module->id parent) (module->id m) {:penwidth 3 :weight 1}]])
-                                                             (map (fn [[from to]] [(module-id->full-name from) (module-id->full-name to) {:label rc :style :solid :weight 1 :color "#00d8ff" :penwidth rc}]) (:references m)))))))
+                                                             (map (fn [[from to]] [(module-id->full-name from) (module-id->full-name to) {:label rc :style :solid :weight 1 :color react-color :penwidth rc}]) (:references m)))))))
          modules)))
 
 (defn gather-modules [components]
@@ -201,7 +203,7 @@
       {:label [:TABLE {:CELLSPACING 0}
                [:TR (into [:TD {:BGCOLOR (cond page "gray"
                                                (:stateless component) "lightgray"
-                                               (:elementary component) "lightgreen"
+                                               (:elementary component) react-color
                                                :else "white")}
                      [:FONT {:COLOR (cond page "black"
                                           :else "black")}

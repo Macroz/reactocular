@@ -138,7 +138,7 @@
 <!-- component/util/Offcanvas -->
 <g id="node47" class="node"><title>component/util/Offcanvas</title>
 <g id="a_node47"><a xlink:title="/component/util/offcanvas.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1571,-762.5 1571,-796.5 1664,-796.5 1664,-762.5 1571,-762.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1571,-762.5 1571,-796.5 1664,-796.5 1664,-762.5 1571,-762.5"/>
 <polygon fill="none" stroke="black" points="1571,-762.5 1571,-796.5 1664,-796.5 1664,-762.5 1571,-762.5"/>
 <text text-anchor="start" x="1587.5" y="-783.3" font-family="Times,serif" font-weight="bold" font-size="14.00">Offcanvas</text>
 <text text-anchor="start" x="1580" y="-769.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -156,7 +156,7 @@
 <!-- component/util/Select -->
 <g id="node62" class="node"><title>component/util/Select</title>
 <g id="a_node62"><a xlink:title="/component/util/select.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1571,-610.5 1571,-644.5 1664,-644.5 1664,-610.5 1571,-610.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1571,-610.5 1571,-644.5 1664,-644.5 1664,-610.5 1571,-610.5"/>
 <polygon fill="none" stroke="black" points="1571,-610.5 1571,-644.5 1664,-644.5 1664,-610.5 1571,-610.5"/>
 <text text-anchor="start" x="1600.5" y="-631.3" font-family="Times,serif" font-weight="bold" font-size="14.00">Select</text>
 <text text-anchor="start" x="1580" y="-617.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -174,7 +174,7 @@
 <!-- component/util/Slider -->
 <g id="node63" class="node"><title>component/util/Slider</title>
 <g id="a_node63"><a xlink:title="/component/util/slider.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1571,-914.5 1571,-948.5 1664,-948.5 1664,-914.5 1571,-914.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1571,-914.5 1571,-948.5 1664,-948.5 1664,-914.5 1571,-914.5"/>
 <polygon fill="none" stroke="black" points="1571,-914.5 1571,-948.5 1664,-948.5 1664,-914.5 1571,-914.5"/>
 <text text-anchor="start" x="1600" y="-935.3" font-family="Times,serif" font-weight="bold" font-size="14.00">Slider</text>
 <text text-anchor="start" x="1580" y="-921.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -243,7 +243,7 @@
 <!-- component/navigation/TopNavigation -->
 <g id="node83" class="node"><title>component/navigation/TopNavigation</title>
 <g id="a_node83"><a xlink:title="/component/navigation/top&#45;navigation.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1350,-714.5 1350,-748.5 1482,-748.5 1482,-714.5 1350,-714.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1350,-714.5 1350,-748.5 1482,-748.5 1482,-714.5 1350,-714.5"/>
 <polygon fill="none" stroke="black" points="1350,-714.5 1350,-748.5 1482,-748.5 1482,-714.5 1350,-714.5"/>
 <text text-anchor="start" x="1372.5" y="-735.3" font-family="Times,serif" font-weight="bold" font-size="14.00">TopNavigation</text>
 <text text-anchor="start" x="1378.5" y="-721.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -463,7 +463,7 @@
 <!-- component/map/DynamicPopup -->
 <g id="node15" class="node"><title>component/map/DynamicPopup</title>
 <g id="a_node15"><a xlink:title="/component/map/dynamic&#45;popup.cjsx">
-<polygon fill="lightgreen" stroke="none" points="766.5,-372.5 766.5,-406.5 865.5,-406.5 865.5,-372.5 766.5,-372.5"/>
+<polygon fill="#00d8ff" stroke="none" points="766.5,-372.5 766.5,-406.5 865.5,-406.5 865.5,-372.5 766.5,-372.5"/>
 <polygon fill="none" stroke="black" points="766.5,-372.5 766.5,-406.5 865.5,-406.5 865.5,-372.5 766.5,-372.5"/>
 <text text-anchor="start" x="770.5" y="-393.3" font-family="Times,serif" font-weight="bold" font-size="14.00">DynamicPopup</text>
 <text text-anchor="start" x="778.5" y="-379.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -476,7 +476,7 @@
 <!-- component/itinerary/EndLeg -->
 <g id="node16" class="node"><title>component/itinerary/EndLeg</title>
 <g id="a_node16"><a xlink:title="/component/itinerary/end&#45;leg.cjsx">
-<polygon fill="lightgreen" stroke="none" points="394,-1731.5 394,-1765.5 515,-1765.5 515,-1731.5 394,-1731.5"/>
+<polygon fill="#00d8ff" stroke="none" points="394,-1731.5 394,-1765.5 515,-1765.5 515,-1731.5 394,-1731.5"/>
 <polygon fill="none" stroke="black" points="394,-1731.5 394,-1765.5 515,-1765.5 515,-1731.5 394,-1731.5"/>
 <text text-anchor="start" x="431.5" y="-1752.3" font-family="Times,serif" font-weight="bold" font-size="14.00">EndLeg</text>
 <text text-anchor="start" x="417" y="-1738.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -518,7 +518,7 @@
 <!-- component/util/MasonryComponent -->
 <g id="node36" class="node"><title>component/util/MasonryComponent</title>
 <g id="a_node36"><a xlink:title="/component/util/masonry&#45;component.js">
-<polygon fill="lightgreen" stroke="none" points="1554,-1546.5 1554,-1580.5 1681,-1580.5 1681,-1546.5 1554,-1546.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1554,-1546.5 1554,-1580.5 1681,-1580.5 1681,-1546.5 1554,-1546.5"/>
 <polygon fill="none" stroke="black" points="1554,-1546.5 1554,-1580.5 1681,-1580.5 1681,-1546.5 1554,-1546.5"/>
 <text text-anchor="start" x="1557" y="-1567.3" font-family="Times,serif" font-weight="bold" font-size="14.00">MasonryComponent</text>
 <text text-anchor="start" x="1580" y="-1553.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -614,7 +614,7 @@
 <!-- component/favourites/NoFavouritesPanel -->
 <g id="node42" class="node"><title>component/favourites/NoFavouritesPanel</title>
 <g id="a_node42"><a xlink:title="/component/favourites/no&#45;favourites&#45;panel.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1125,-1318.5 1125,-1352.5 1254,-1352.5 1254,-1318.5 1125,-1318.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1125,-1318.5 1125,-1352.5 1254,-1352.5 1254,-1318.5 1125,-1318.5"/>
 <polygon fill="none" stroke="black" points="1125,-1318.5 1125,-1352.5 1254,-1352.5 1254,-1318.5 1125,-1318.5"/>
 <text text-anchor="start" x="1134" y="-1339.3" font-family="Times,serif" font-weight="bold" font-size="14.00">NoFavouritesPanel</text>
 <text text-anchor="start" x="1152" y="-1325.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -705,7 +705,7 @@
 <!-- Html -->
 <g id="node22" class="node"><title>Html</title>
 <g id="a_node22"><a xlink:title="/html.cjsx">
-<polygon fill="lightgreen" stroke="none" points="42.5,-1461.5 42.5,-1495.5 123.5,-1495.5 123.5,-1461.5 42.5,-1461.5"/>
+<polygon fill="#00d8ff" stroke="none" points="42.5,-1461.5 42.5,-1495.5 123.5,-1495.5 123.5,-1461.5 42.5,-1461.5"/>
 <polygon fill="none" stroke="black" points="42.5,-1461.5 42.5,-1495.5 123.5,-1495.5 123.5,-1461.5 42.5,-1461.5"/>
 <text text-anchor="start" x="67" y="-1482.3" font-family="Times,serif" font-weight="bold" font-size="14.00">Html</text>
 <text text-anchor="start" x="45.5" y="-1468.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -791,7 +791,7 @@
 <!-- component/navigation/TimeSelectors -->
 <g id="node81" class="node"><title>component/navigation/TimeSelectors</title>
 <g id="a_node81"><a xlink:title="/component/navigation/time&#45;selectors.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1350,-538.5 1350,-572.5 1482,-572.5 1482,-538.5 1350,-538.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1350,-538.5 1350,-572.5 1482,-572.5 1482,-538.5 1350,-538.5"/>
 <polygon fill="none" stroke="black" points="1350,-538.5 1350,-572.5 1482,-572.5 1482,-538.5 1350,-538.5"/>
 <text text-anchor="start" x="1374.5" y="-559.3" font-family="Times,serif" font-weight="bold" font-size="14.00">TimeSelectors</text>
 <text text-anchor="start" x="1378.5" y="-545.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -888,7 +888,7 @@
 <!-- component/map/Line -->
 <g id="node33" class="node"><title>component/map/Line</title>
 <g id="a_node33"><a xlink:title="/component/map/line.cjsx">
-<polygon fill="lightgreen" stroke="none" points="936,-991.5 936,-1025.5 1035,-1025.5 1035,-991.5 936,-991.5"/>
+<polygon fill="#00d8ff" stroke="none" points="936,-991.5 936,-1025.5 1035,-1025.5 1035,-991.5 936,-991.5"/>
 <polygon fill="none" stroke="black" points="936,-991.5 936,-1025.5 1035,-1025.5 1035,-991.5 936,-991.5"/>
 <text text-anchor="start" x="972" y="-1012.3" font-family="Times,serif" font-weight="bold" font-size="14.00">Line</text>
 <text text-anchor="start" x="948" y="-998.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -906,7 +906,7 @@
 <!-- component/map/LocationMarker -->
 <g id="node34" class="node"><title>component/map/LocationMarker</title>
 <g id="a_node34"><a xlink:title="/component/map/location&#45;marker.cjsx">
-<polygon fill="lightgreen" stroke="none" points="934,-1066.5 934,-1100.5 1037,-1100.5 1037,-1066.5 934,-1066.5"/>
+<polygon fill="#00d8ff" stroke="none" points="934,-1066.5 934,-1100.5 1037,-1100.5 1037,-1066.5 934,-1066.5"/>
 <polygon fill="none" stroke="black" points="934,-1066.5 934,-1100.5 1037,-1100.5 1037,-1066.5 934,-1066.5"/>
 <text text-anchor="start" x="937" y="-1087.3" font-family="Times,serif" font-weight="bold" font-size="14.00">LocationMarker</text>
 <text text-anchor="start" x="948" y="-1073.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -1091,7 +1091,7 @@
 <!-- component/navigation/LangSelect -->
 <g id="node32" class="node"><title>component/navigation/LangSelect</title>
 <g id="a_node32"><a xlink:title="/component/navigation/lang&#45;select.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1551,-1066.5 1551,-1100.5 1683,-1100.5 1683,-1066.5 1551,-1066.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1551,-1066.5 1551,-1100.5 1683,-1100.5 1683,-1066.5 1551,-1066.5"/>
 <polygon fill="none" stroke="black" points="1551,-1066.5 1551,-1100.5 1683,-1100.5 1683,-1066.5 1551,-1066.5"/>
 <text text-anchor="start" x="1585" y="-1087.3" font-family="Times,serif" font-weight="bold" font-size="14.00">LangSelect</text>
 <text text-anchor="start" x="1579.5" y="-1073.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -1148,7 +1148,7 @@
 <!-- component/map/NavigationMap -->
 <g id="node39" class="node"><title>component/map/NavigationMap</title>
 <g id="a_node39"><a xlink:title="/component/map/navigation&#45;map.cjsx">
-<polygon fill="lightgreen" stroke="none" points="405,-190.5 405,-224.5 504,-224.5 504,-190.5 405,-190.5"/>
+<polygon fill="#00d8ff" stroke="none" points="405,-190.5 405,-224.5 504,-224.5 504,-190.5 405,-190.5"/>
 <polygon fill="none" stroke="black" points="405,-190.5 405,-224.5 504,-224.5 504,-190.5 405,-190.5"/>
 <text text-anchor="start" x="409" y="-211.3" font-family="Times,serif" font-weight="bold" font-size="14.00">NavigationMap</text>
 <text text-anchor="start" x="417" y="-197.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -1359,7 +1359,7 @@
 <!-- component/route/RouteListHeader -->
 <g id="node53" class="node"><title>component/route/RouteListHeader</title>
 <g id="a_node53"><a xlink:title="/component/route/route&#45;list&#45;header.cjsx">
-<polygon fill="lightgreen" stroke="none" points="223,-281.5 223,-315.5 330,-315.5 330,-281.5 223,-281.5"/>
+<polygon fill="#00d8ff" stroke="none" points="223,-281.5 223,-315.5 330,-315.5 330,-281.5 223,-281.5"/>
 <polygon fill="none" stroke="black" points="223,-281.5 223,-315.5 330,-315.5 330,-281.5 223,-281.5"/>
 <text text-anchor="start" x="226" y="-302.3" font-family="Times,serif" font-weight="bold" font-size="14.00">RouteListHeader</text>
 <text text-anchor="start" x="239" y="-288.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -1724,7 +1724,7 @@
 <!-- util/StoreListeningIntlProvider -->
 <g id="node75" class="node"><title>util/StoreListeningIntlProvider</title>
 <g id="a_node75"><a xlink:title="/util/store&#45;listening&#45;intl&#45;provider.cjsx">
-<polygon fill="lightgreen" stroke="none" points="1.5,-1536.5 1.5,-1570.5 164.5,-1570.5 164.5,-1536.5 1.5,-1536.5"/>
+<polygon fill="#00d8ff" stroke="none" points="1.5,-1536.5 1.5,-1570.5 164.5,-1570.5 164.5,-1536.5 1.5,-1536.5"/>
 <polygon fill="none" stroke="black" points="1.5,-1536.5 1.5,-1570.5 164.5,-1570.5 164.5,-1536.5 1.5,-1536.5"/>
 <text text-anchor="start" x="4.5" y="-1557.3" font-family="Times,serif" font-weight="bold" font-size="14.00">StoreListeningIntlProvider</text>
 <text text-anchor="start" x="45.5" y="-1543.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
@@ -1877,7 +1877,7 @@
 <!-- component/trip/TripListHeader -->
 <g id="node87" class="node"><title>component/trip/TripListHeader</title>
 <g id="a_node87"><a xlink:title="/component/trip/trip&#45;list&#45;header.cjsx">
-<polygon fill="lightgreen" stroke="none" points="227,-143.5 227,-177.5 326,-177.5 326,-143.5 227,-143.5"/>
+<polygon fill="#00d8ff" stroke="none" points="227,-143.5 227,-177.5 326,-177.5 326,-143.5 227,-143.5"/>
 <polygon fill="none" stroke="black" points="227,-143.5 227,-177.5 326,-177.5 326,-143.5 227,-143.5"/>
 <text text-anchor="start" x="230" y="-164.3" font-family="Times,serif" font-weight="bold" font-size="14.00">TripListHeader</text>
 <text text-anchor="start" x="239" y="-150.3" font-family="Times,serif" font-size="14.00">«elementary»</text>
