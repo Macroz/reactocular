@@ -132,7 +132,7 @@
 (defn add-module-references [components modules]
   (map (fn [m] (assoc m :references (module-references components m)))  modules))
 
-(defn add-edges [modules]
+(defn add-module-edges [modules]
   (let [by-id (index-by :module-id modules)]
     (map (fn [m]
            (let [parent (by-id (:parent-id m))]
@@ -146,7 +146,7 @@
         modules (add-parent-ids modules)
         modules (full-parent-tree modules)
         modules (add-module-references components modules)
-        modules (add-edges modules)]
+        modules (add-module-edges modules)]
     modules))
 
 (defn scan [path]
