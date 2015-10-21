@@ -103,6 +103,20 @@
            (assoc module :parent-id parent-id)))
        modules))
 
+(defn add-parent-ids [modules]
+  (map (fn [module]
+         (let [id (:module-id module)
+               parent-id (when (> (count id) 1) (vec (drop-last 1 id)))]
+           (assoc module :parent-id parent-id)))
+       modules))
+
+(defn add-parent-ids [modules]
+  (map (fn [module]
+         (let [id (:module-id module)
+               parent-id (when (> (count id) 1) (vec (drop-last 1 id)))]
+           (assoc module :parent-id parent-id)))
+       modules))
+
 (defn module-references [components module]
   (->> components
        (mapcat (fn [c] (for [r (:references c)] [(:module-id c) (:module-id r)])))
@@ -129,16 +143,20 @@
         (create-module-from-module-id module-id)
         ))))
 
+(defn self-reference? [[f t & opts]]
+  (= f t))
+
 (defn add-module-references [components modules]
   (map (fn [m] (assoc m :references (module-references components m)))  modules))
 
 (defn add-module-edges [modules]
   (let [by-id (index-by :module-id modules)]
     (map (fn [m]
-           (let [parent (by-id (:parent-id m))]
-             (assoc m :edges (concat (when parent
-                                       [[(module->id parent) (module->id m) {:penwidth 3 :weight 1}]])
-                                     (map (fn [[from to]] [(module-id->full-name from) (module-id->full-name to) {:label (count (:references m)) :style :dashed :weight 0}]) (:references m))))))
+           (let [parent (by-id (:parent-id m))
+                 rc (count (:references m))]
+             (assoc m :edges (remove self-reference? (concat (when parent
+                                                               [[(module->id parent) (module->id m) {:penwidth 3 :weight 1}]])
+                                                             (map (fn [[from to]] [(module-id->full-name from) (module-id->full-name to) {:label rc :style :solid :weight 1 :color "#00d8ff" :penwidth rc}]) (:references m)))))))
          modules)))
 
 (defn gather-modules [components]
