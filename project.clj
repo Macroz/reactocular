@@ -1,4 +1,4 @@
-(defproject macroz/reactocular "0.1.1"
+(defproject macroz/reactocular "0.2.0"
   :description "Visual brutish component scan of React projects"
   :url "https://github.com/Macroz/reactocular"
   :license {:name "Eclipse Public License"
