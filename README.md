@@ -28,9 +28,11 @@ You can use it like a regular Java app like this:
 java -jar reactocular.jar ../hsl/digitransit-ui/app
 ```
 
-The result is a set of files with various visualiations of your components. You can see that there is still work to do :)
+The result is a set of files with various visualiations of your components. You can see that there is still work to do, in this project as well as the example :)
 
-![Example component.svg](https://rawgit.com/Macroz/reactocular/master/examples/digitransit.svg) (from [Digitransit](http://digitransit.fi))
+Component diagram with references between components. Shows also which components are elementary building blocks (green), as well as stateless functional components (gray).
+
+![Example components.svg](https://rawgit.com/Macroz/reactocular/master/examples/digitransit-components.svg) (from [Digitransit](http://digitransit.fi))
 
 Module diagram with folder structure (solid black) and component references (solid blue)
 
