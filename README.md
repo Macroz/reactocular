@@ -21,7 +21,7 @@ You can use reactocular from command-line if you have [Graphviz](http://www.grap
 lein run ../hsl/digitransit-ui/app
 ```
 
-There is also a convenient [uberjar](uberjar/reactocular.jar?raw=true) available to download.
+There is also a convenient [uberjar available to download](https://github.com/Macroz/reactocular/releases/latest).
 You can use it like a regular Java app like this:
 
 ```
