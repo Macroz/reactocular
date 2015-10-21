@@ -32,6 +32,10 @@ The result is a set of files with various visualiations of your components. You 
 
 ![Example component.svg](https://rawgit.com/Macroz/reactocular/master/examples/digitransit.svg) (from [Digitransit](http://digitransit.fi))
 
+Module diagram with folder structure (solid black) and component references (solid blue)
+
+![Example modules.svg](https://rawgit.com/Macroz/reactocular/master/examples/digitransit-modules.svg) (from [Digitransit](http://digitransit.fi))
+
 Also if you want to use the code from Clojure, add to your project.clj:
 
 [![Clojars Project](http://clojars.org/macroz/reactocular/latest-version.svg)](http://clojars.org/macroz/reactocular)
