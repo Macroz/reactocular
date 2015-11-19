@@ -14,6 +14,11 @@
         (.endsWith name ".jsx")
         (.endsWith name ".js"))))
 
+(defn interesting-component? [component]
+  (not (contains? #{"ComponentUsageExample"
+                    "ComponentDocumentation"}
+                  (:name component))))
+
 (defn remove-suffix [name]
   (if (= -1 (.indexOf name "."))
     name
@@ -187,6 +192,7 @@
                    (filter file-contains-component?)
                    (sort-by #(.getName %)))
         components (doall (map (partial file->component root) files))
+        components (doall (filter interesting-component? components))
         components (doall (map (fn [component]
                                  (let [references (component->references components component)]
                                    (assoc component :references references)))
