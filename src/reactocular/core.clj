@@ -65,14 +65,23 @@
      :file file
      :stateless (file-contains-stateless-functional-component? file name)}))
 
+(defn contains-tag-use-of? [component src]
+  (re-find (re-pattern (str "<" (:name component) "([ \\n/>]+)")) src))
+
+(defn contains-provideContext-wrapped? [component src]
+  (re-find (re-pattern (str "provideContext " (:name component) ",")) src))
+
+(defn contains-bracketed-use-of? [component src]
+  (> (.indexOf src (str "{" (:name component) "}")) -1))
+
+(def component-use-matchers
+  [contains-tag-use-of?
+   contains-provideContext-wrapped?
+   contains-bracketed-use-of?])
+
 (defn find-all-uses [components src]
   (doall (filter (fn [component]
-                   (let [s (str "<" (:name component) "([ \\n/>]+)")
-                         pattern (re-pattern s)
-                         provide-context (re-pattern (str "provideContext " (:name component) ","))]
-                     (or (re-find pattern src)
-                         (re-find provide-context src)
-                         (> (.indexOf src (str "{" (:name component) "}")) -1))))
+                   (some #(% component src) component-use-matchers))
                  components)))
 
 (defn component->references [components component]
