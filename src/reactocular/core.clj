@@ -65,7 +65,7 @@
      :file file
      :stateless (file-contains-stateless-functional-component? file name)}))
 
-(defn find-all [components src]
+(defn find-all-uses [components src]
   (doall (filter (fn [component]
                    (let [s (str "<" (:name component) "([ \\n/>]+)")
                          pattern (re-pattern s)
@@ -77,7 +77,7 @@
 
 (defn component->references [components component]
   (let [src (slurp (:file component))]
-    (find-all components src)))
+    (find-all-uses components src)))
 
 (defn component->edges [component]
   (for [referred-component (:references component)]
