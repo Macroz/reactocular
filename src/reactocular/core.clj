@@ -68,8 +68,10 @@
 (defn find-all [components src]
   (doall (filter (fn [component]
                    (let [s (str "<" (:name component) "([ \\n/>]+)")
-                         pattern (re-pattern s)]
+                         pattern (re-pattern s)
+                         provide-context (re-pattern (str "provideContext " (:name component) ","))]
                      (or (re-find pattern src)
+                         (re-find provide-context src)
                          (> (.indexOf src (str "{" (:name component) "}")) -1))))
                  components)))
 
