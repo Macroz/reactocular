@@ -209,13 +209,29 @@
 (defn set-flags [& flags]
   (into [] (remove nil? (for [[t fk] (partition 2 flags)] (when t fk)))))
 
+(defn component-refers-to? [component1 component2]
+  (some #{component2} (:references component1)))
+
+(defn component-refers-to-name? [component1 name]
+  (some #{name} (map :name (:references component1))))
+
+(defn documented-stereotypes [component]
+  (println "documented? " (:name component) (component-refers-to-name? component "ComponentUsageExample"))
+  (when (component-refers-to-name? component "ComponentUsageExample")
+    [{:color "darkgreen" :stereotype :documented}]))
+
 (defn component->descriptor [component]
   (let [page (some #{"page"} (:module-id component))
-        stereotypes (set-flags page :page
-                               (:stateless component) :stateless
-                               (:elementary component) :elementary)
+        stereotypes (set-flags page {:stereotype :page}
+                               (:stateless component) {:stereotype :stateless}
+                               (:elementary component) {:stereotype :elementary})
+        _ (println stereotypes (documented-stereotypes component))
+        stereotypes (concat stereotypes (documented-stereotypes component))
         stereotypes (apply concat (for [stereotype stereotypes]
-                                    [[:BR] (str "&laquo;" (name stereotype) "&raquo;")]))]
+                                    (let [{kw :stereotype color :color} stereotype
+                                          s (str "&laquo;" (name kw) "&raquo;")]
+                                      [[:BR]
+                                       (if color [:FONT {:COLOR color} s] s)])))]
     (if (:label component)
       component
       {:label [:TABLE {:CELLSPACING 0}
