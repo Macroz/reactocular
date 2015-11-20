@@ -94,7 +94,7 @@
     (find-all-uses components src)))
 
 (defn component->edges [component]
-  (for [referred-component (:references component)]
+  (for [referred-component (filter interesting-component? (:references component))]
     [(:full-name component) (:full-name referred-component)]))
 
 (defn module-id->full-name [module]
@@ -192,17 +192,18 @@
                    (filter file-contains-component?)
                    (sort-by #(.getName %)))
         components (doall (map (partial file->component root) files))
-        components (doall (filter interesting-component? components))
         components (doall (map (fn [component]
                                  (let [references (component->references components component)]
                                    (assoc component :references references)))
                                components))
+        components (doall (filter interesting-component? components))
         components (doall (map (fn [component]
                                  (let [edges (component->edges component)]
                                    (assoc component
                                           :edges edges
                                           :elementary (= (count edges) 0))))
-                               components))]
+                               components))
+        ]
     components))
 
 (defn set-flags [& flags]
